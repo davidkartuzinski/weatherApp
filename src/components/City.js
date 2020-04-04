@@ -1,7 +1,7 @@
 import React from "react";
 
 class City extends React.Component {
-  state = { city: "" };
+  state = { city: "Paris" };
 
   onFormSubmit = event => {
     event.preventDefault();
@@ -13,7 +13,6 @@ class City extends React.Component {
     return (
       <form onSubmit={this.onFormSubmit} className="ui form">
         <div className="field">
-          {/* Hidden because it's ugly in this App but there for accessibility */}
           <label style={{ visibility: "hidden" }} htmlFor="city">
             City:
           </label>
