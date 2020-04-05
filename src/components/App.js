@@ -24,6 +24,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   height: 100vh;
+  max-width: 700px;
 `;
 
 class App extends React.Component {
