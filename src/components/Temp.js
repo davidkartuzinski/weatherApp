@@ -19,7 +19,6 @@ const TempSection = styled.section`
 `;
 
 const CelsiusToggle = ({ celsius, updateTempMetric }) => {
-  console.log(celsius, "cellss");
   return (
     <form>
       <input
@@ -27,7 +26,7 @@ const CelsiusToggle = ({ celsius, updateTempMetric }) => {
         name="degree-type"
         id="celsius"
         value="metric"
-        checked={celsius === true}
+        checked={celsius === "metric"}
         onChange={updateTempMetric}
       />
       <label htmlFor="celsius">°C</label>
@@ -37,7 +36,7 @@ const CelsiusToggle = ({ celsius, updateTempMetric }) => {
         name="degree-type"
         id="farenheit"
         value="imperial"
-        checked={celsius === false}
+        checked={celsius === "imperial"}
         onChange={updateTempMetric}
       />
       <label htmlFor="farenheit">°F</label>
@@ -47,26 +46,19 @@ const CelsiusToggle = ({ celsius, updateTempMetric }) => {
 
 class Temp extends React.Component {
   state = {
-    celsius: "true"
+    celsius: "metric"
   };
 
   updateTempMetric = event => {
     this.setState(
       {
         celsius: event.target.value
-      },
-      () => {
-        console.log(this.state);
       }
+      // () => {
+      //   console.log(this.state);
+      // }
     );
   };
-
-  componentDidUpdate(prevState, prevProps) {
-    if (this.state.celsius !== prevState.celsius) {
-      console.log("toggle state has changed.");
-      // todo: update the DOM.
-    }
-  }
 
   render() {
     return (
@@ -76,9 +68,9 @@ class Temp extends React.Component {
           updateTempMetric={this.updateTempMetric}
         />
         <h2>
-          {this.state.celsius
-            ? Math.round(this.props.temp - 273.15)
-            : Math.round(((this.props.temp - 273.15) * 9) / 5 + 32)}
+          {this.state.celsius === "metric"
+            ? `${Math.round(this.props.temp - 273.15)} °C`
+            : `${Math.round(((this.props.temp - 273.15) * 9) / 5 + 32)} °F`}
         </h2>
       </TempSection>
     );

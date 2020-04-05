@@ -1,6 +1,5 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import openweathermap from "../Api/openweather";
 import axios from "axios";
 
 import Header from "./Header";
@@ -16,6 +15,8 @@ const GlobalStyle = createGlobalStyle`
     background-color: #DADADA;
     height: 100%;
   }
+  
+
 `;
 
 const Wrapper = styled.div`
@@ -39,7 +40,6 @@ class App extends React.Component {
       )
       .then(
         result => {
-          console.log(result, "<--result");
           this.setState({
             isLoaded: true,
             temp: result
@@ -61,7 +61,6 @@ class App extends React.Component {
       )
       .then(
         result => {
-          console.log(result, "<--result");
           this.setState({
             isLoaded: true,
             temp: result
